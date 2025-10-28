@@ -19,7 +19,7 @@ export default function Stories() {
     <div className="min-h-screen bg-yellow-400 pb-24">
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-4xl font-bold font-nunito tracking-readable text-center mb-12">
-          CUENTOS
+          Favoritos
         </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">

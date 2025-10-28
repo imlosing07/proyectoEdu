@@ -1,6 +1,6 @@
 export interface Pictogram {
   text: string;
-  image: string; // URL de la imagen o null
+  image?: string;
 }
 
 export interface Story {
@@ -8,6 +8,8 @@ export interface Story {
   title: string;
   category: string;
   content: Pictogram[];
+  audioTone?: string; // Nuevo campo
+  hasAudio?: boolean; // Nuevo campo
 }
 
 export interface Question {
