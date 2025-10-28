@@ -1,0 +1,9 @@
+# entorno virtual
+myenv/
+env/
+
+# python
+__pycache__/
+
+# archivos env
+.env
