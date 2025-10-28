@@ -6,6 +6,7 @@ import os
 
 # Importar el router de usuario
 from api.user import router as user_router
+from api.static import router as static_router
 
 # Cargar variables del archivo .env
 load_dotenv()
@@ -26,6 +27,7 @@ app = FastAPI(
 
 # Incluir el router de usuarios
 app.include_router(user_router)
+app.include_router(static_router)
 
 # Ruta de bienvenida
 @app.get("/")
