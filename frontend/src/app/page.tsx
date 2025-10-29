@@ -23,7 +23,6 @@ export default function RoleSelection() {
             alt="Lexio"
             className="w-full h-full object-contain drop-shadow-md"
           />
-        </div>
       </div>
 
       {/* Título cálido */}
