@@ -76,7 +76,7 @@ export default function QuizPage() {
         {/* Búho + Resultado */}
         <div className="mb-12">
           <div className="w-40 h-40 bg-white rounded-full shadow-2xl p-8 flex items-center justify-center">
-            <img src="/owl-reading.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
+            <img src="/home/logoSinFondo.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
           </div>
         </div>
 

@@ -28,8 +28,8 @@ export default function AgeInput() {
 
       {/* Búho */}
       <div className="mb-16">
-        <div className="w-32 h-32 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
-          <img src="/owl-reading.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
+        <div className="w-64 h-64 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
+          <img src="/home/logoSinFondo2.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
         </div>
       </div>
 

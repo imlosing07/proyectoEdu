@@ -63,7 +63,7 @@ export default function StoryPage() {
       <div className="flex flex-col items-center pt-8 pb-6 px-6">
         <div className="mb-6">
           <div className="w-28 h-28 bg-white rounded-full shadow-2xl p-5 flex items-center justify-center">
-            <img src="/owl-reading.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
+            <img src="/home/logoSinFondo2.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
           </div>
         </div>
 

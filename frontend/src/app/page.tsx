@@ -11,13 +11,11 @@ export default function RoleSelection() {
 
       {/* Búho con libro (tu imagen) */}
       <div className="mb-16">
-        <div className="w-32 h-32 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
           <img
-            src="/owl-reading.png"
+            src="/home/logoSinFondo2.png"
             alt="Búho lector"
-            className="w-full h-full object-contain drop-shadow-md"
+            className="w-72 h-72 object-contain drop-shadow-md"
           />
-        </div>
       </div>
 
       {/* Título cálido */}
