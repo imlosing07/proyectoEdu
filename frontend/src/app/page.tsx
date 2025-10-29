@@ -7,9 +7,9 @@ import Button from '@/components/ui/Button';
 export default function RoleSelection() {
   const router = useRouter();
   return (
-    <div className="min-h-screen bg-[#FFF8E1] flex flex-col items-center justify-center p-8">
+    <div className="min-h-screen bg-[#5CB8E4] flex flex-col items-center justify-center p-8">
 
-      {/* Búho con libro (tu imagen) */}
+      {/* Búho con libro */}
       <div className="mb-16">
           <img
             src="/home/logoSinFondo2.png"
@@ -19,56 +19,55 @@ export default function RoleSelection() {
       </div>
 
       {/* Título cálido */}
-      <h1 className="text-4xl md:text-5xl font-black text-[#1A3C5E] text-center mb-12 tracking-widest">
-        ¡BIENVENIDO!
+      <h1 className="text-4xl md:text-5xl font-black text-[#0D3B66] text-center mb-12 tracking-widest drop-shadow-lg">
+        ¡BIENVENIDO A LEXIA!
       </h1>
 
       <div className="space-y-8 w-full max-w-md">
 
-        {/* BOTÓN ESTUDIANTE – Chill y tranquilo */}
+        {/* BOTÓN ESTUDIANTE */}
         <button
           onClick={() => router.push('/student/age-input')}
           className={`
-            group w-full bg-white rounded-full py-7 px-10 
-            flex items-center justify-between 
-            shadow-xl hover:shadow-2xl 
-            border-4 border-[#4CAF50]
-            transition-all duration-300
-          `}
+        group w-full bg-gradient-to-r from-[#A8E6CF] to-[#56C596] 
+        rounded-full py-7 px-10 
+        flex items-center justify-between 
+        shadow-xl hover:shadow-2xl 
+        border-4 border-[#FFFFFF]
+        transition-all duration-300 transform hover:scale-105
+      `}
         >
-          <span className="text-3xl md:text-4xl font-black text-[#4CAF50] tracking-widest">
-            SOY ESTUDIANTE
+          <span className="text-2xl md:text-4xl font-black text-[#084C61] tracking-widest flex items-center gap-2">
+            Soy estudiante
+            <span className="text-3xl">🎓</span>
           </span>
-          <div className="w-12 h-12 bg-[#4CAF50] rounded-full flex items-center justify-center shadow-lg group-hover:bg-[#43A047] transition-colors">
-            <span className="text-3xl text-white font-bold">→</span>
-          </div>
         </button>
 
-        {/* BOTÓN PROFESOR – Suave y claro */}
+        {/* BOTÓN PROFESOR */}
         <button
           onClick={() => router.push('/adult/')}
           className={`
-            group w-full bg-[#FFB74D] rounded-full py-7 px-10 
-            flex items-center justify-between 
-            shadow-xl hover:shadow-2xl 
-            border-4 border-white
-            transition-all duration-300
-          `}
+        group w-full bg-gradient-to-r from-[#FFD166] to-[#FF9E80]
+        rounded-full py-7 px-10 
+        flex items-center justify-between 
+        shadow-xl hover:shadow-2xl 
+        border-4 border-white
+        transition-all duration-300 transform hover:scale-105
+      `}
         >
-          <span className="text-3xl md:text-4xl font-black text-white tracking-widest drop-shadow-md">
-            SOY PROFESOR
+          <span className="text-2xl md:text-4xl font-black text-[#3D405B] tracking-widest flex items-center gap-2">
+            Soy profesor
+            <span className="text-3xl">👨‍🏫</span>
           </span>
-          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:bg-[#FFF] transition-colors">
-            <span className="text-3xl text-[#FFB74D] font-bold">→</span>
-          </div>
         </button>
 
       </div>
 
       {/* Texto sutil */}
-      <p className="mt-10 text-lg text-[#1A3C5E] font-medium opacity-80">
+      <p className="mt-10 text-lg text-[#0D3B66] font-medium opacity-90">
         Elige tu rol y comienza la aventura
       </p>
+
     </div>
   );
 }
