@@ -7,7 +7,7 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 
 export default function AgeInput() {
-  const [age, setAge] = useState('');
+  const [age, setAge] = useState(localStorage.getItem('studentAge') || '');
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {

@@ -41,7 +41,7 @@ export default function RoleSelection() {
           <span className="text-3xl md:text-4xl font-black text-[#4CAF50] tracking-widest">
             SOY ESTUDIANTE
           </span>
-          <div className="w-16 h-16 bg-[#4CAF50] rounded-full flex items-center justify-center shadow-lg group-hover:bg-[#43A047] transition-colors">
+          <div className="w-12 h-12 bg-[#4CAF50] rounded-full flex items-center justify-center shadow-lg group-hover:bg-[#43A047] transition-colors">
             <span className="text-3xl text-white font-bold">→</span>
           </div>
         </button>
@@ -60,7 +60,7 @@ export default function RoleSelection() {
           <span className="text-3xl md:text-4xl font-black text-white tracking-widest drop-shadow-md">
             SOY PROFESOR
           </span>
-          <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:bg-[#FFF] transition-colors">
+          <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg group-hover:bg-[#FFF] transition-colors">
             <span className="text-3xl text-[#FFB74D] font-bold">→</span>
           </div>
         </button>

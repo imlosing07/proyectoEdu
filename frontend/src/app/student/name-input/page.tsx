@@ -7,14 +7,14 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 
 export default function NameInput() {
-  const [name, setName] = useState('');
+  const [name, setName] = useState(localStorage.getItem('studentName') || '');
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (name) {
       localStorage.setItem('studentName', name);
-      router.push('/student/stories');
+      router.push('/student/categories');
     }
     else {
       alert('Por favor, ingresa tu nombre.');
