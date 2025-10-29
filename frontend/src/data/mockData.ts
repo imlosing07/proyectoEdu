@@ -32,7 +32,7 @@ export const mockStories: Story[] = [
     id: "1",
     title: "La Tortuga y la Liebre",
     category: "1",
-    image: "/stories/tortuga-liebre.jpg",
+    image: "/stories/Tortuga-liebre.jpg",
     contenidos: {
       primerCiclo: [
         // PANTALLA 1
@@ -70,7 +70,7 @@ export const mockStories: Story[] = [
         { text: "la", image: "" },
         { text: "tortuga", image: "/pictograms/tortuga.png" },
         { text: "camina", image: "/pictograms/camina.png" },
-        { text: "sin parar", image: "/pictograms/constancia.png" },
+        { text: "sin parar", image: "" },
         { text: "paso", image: "" },
         { text: "a paso", image: "" },
 
@@ -86,11 +86,9 @@ export const mockStories: Story[] = [
         // PANTALLA 6
         { text: "La", image: "" },
         { text: "moraleja", image: "/pictograms/moraleja.png" },
-        { text: "es", image: "" },
-        { text: "constancia", image: "/pictograms/constancia.png" },
-        { text: "y", image: "" },
+        { text: "es el", image: "" },
         { text: "esfuerzo", image: "/pictograms/esfuerzo.png" },
-        { text: "vencen", image: "" },
+        { text: "vence", image: "" },
         { text: "a la", image: "" },
         { text: "velocidad", image: "/pictograms/rapido.png" },
         { text: "sin", image: "" },
@@ -122,7 +120,7 @@ export const mockStories: Story[] = [
         { text: "Mientras tanto", image: "" },
         { text: "la tortuga", image: "/pictograms/tortuga.png" },
         { text: "camina", image: "/pictograms/camina.png" },
-        { text: "sin parar", image: "/pictograms/constancia.png" },
+        { text: "sin parar", image: "" },
         { text: "paso a paso", image: "" },
 
         // PANTALLA 5
@@ -134,7 +132,7 @@ export const mockStories: Story[] = [
 
         // PANTALLA 6
         { text: "La moraleja", image: "/pictograms/moraleja.png" },
-        { text: "es constancia", image: "/pictograms/constancia.png" },
+        { text: "es constancia", image: "" },
         { text: "y esfuerzo", image: "/pictograms/esfuerzo.png" },
         { text: "vencen a la", image: "" },
         { text: "velocidad", image: "/pictograms/rapido.png" },
@@ -176,7 +174,7 @@ export const mockStories: Story[] = [
 
         // PANTALLA 6
         { text: "La moraleja", image: "/pictograms/moraleja.png" },
-        { text: "es constancia", image: "/pictograms/constancia.png" },
+        { text: "es constancia", image: "" },
         { text: "y esfuerzo", image: "/pictograms/esfuerzo.png" },
         { text: "vencen a la", image: "" },
         { text: "velocidad sin", image: "" },
@@ -658,7 +656,7 @@ export const categories = [
   {
     id: '1',
     name: 'Cuentos Clásicos y Fábulas',
-    image: '/categories/1.jpg',
+    image: '/categories/cat1.jpg',
     stories: mockStories.filter(s => s.category === '1')
   },
   {
