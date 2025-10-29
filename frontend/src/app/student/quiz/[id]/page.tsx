@@ -4,33 +4,50 @@ import { useState } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import Navigation from '@/components/layout/Navigation';
 import { mockQuizzes } from '@/data/mockData';
+import { Check, X, RotateCw, ArrowRight, Star } from 'lucide-react';
 
 export default function QuizPage() {
   const router = useRouter();
-  const params = useParams();
-  const storyId = params.id as string;
+  const { id } = useParams();
+  const storyId = id as string;
 
   const quiz = mockQuizzes.find(q => q.storyId === storyId);
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
   const [showResults, setShowResults] = useState(false);
   const [stars, setStars] = useState(0);
 
   if (!quiz) {
-    return <div>Quiz no encontrado</div>;
+    return (
+      <div className="min-h-screen bg-[#5CB8E4] flex items-center justify-center p-8">
+        <p className="text-3xl font-black text-white drop-shadow-lg">Quiz no encontrado</p>
+      </div>
+    );
   }
 
-  const handleAnswerSelect = (questionIndex: number, answerIndex: number) => {
+  const currentQuestion = quiz.questions[currentQuestionIndex];
+  const isLastQuestion = currentQuestionIndex === quiz.questions.length - 1;
+
+  const handleAnswerSelect = (answerIndex: number) => {
     if (showResults) return;
     
     const newAnswers = [...selectedAnswers];
-    newAnswers[questionIndex] = answerIndex;
+    newAnswers[currentQuestionIndex] = answerIndex;
     setSelectedAnswers(newAnswers);
+
+    // Avanzar automáticamente tras 1 segundo
+    setTimeout(() => {
+      if (isLastQuestion) {
+        handleReview();
+      } else {
+        setCurrentQuestionIndex(prev => prev + 1);
+      }
+    }, 800);
   };
 
   const handleReview = () => {
     setShowResults(true);
     
-    // Calculate stars
     let correctCount = 0;
     quiz.questions.forEach((question, index) => {
       if (selectedAnswers[index] === question.correctAnswer) {
@@ -38,11 +55,11 @@ export default function QuizPage() {
       }
     });
     
-    // 1 star for 1 correct, 2 stars for 2 correct, 3 stars for all correct
     setStars(correctCount);
   };
 
   const handleReset = () => {
+    setCurrentQuestionIndex(0);
     setSelectedAnswers([]);
     setShowResults(false);
     setStars(0);
@@ -52,94 +69,137 @@ export default function QuizPage() {
     router.push('/student/stories');
   };
 
-  return (
-    <div className="min-h-screen bg-amber-50 pb-24">
-      <div className="container mx-auto px-4 py-8">
-        <div className="max-w-3xl mx-auto space-y-8">
-          {quiz.questions.map((question, qIndex) => (
-            <div key={question.id} className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold font-nunito tracking-readable mb-6">
-                PREGUNTA {qIndex + 1}
-              </h2>
-              
-              <p className="text-xl font-poppins tracking-readable mb-6">
-                {question.question}
-              </p>
+  if (showResults) {
+    return (
+      <div className="min-h-screen bg-[#5CB8E4] flex flex-col items-center justify-center p-8">
 
-              <div className="grid grid-cols-2 gap-4">
-                {question.answers.map((answer, aIndex) => {
-                  const isSelected = selectedAnswers[qIndex] === aIndex;
-                  const isCorrect = aIndex === question.correctAnswer;
-                  
-                  let buttonClass = 'border-2 border-purple-300 bg-purple-50 hover:bg-purple-100';
-                  
-                  if (showResults) {
-                    if (isSelected && isCorrect) {
-                      buttonClass = 'bg-green-500 text-white border-green-600';
-                    } else if (isSelected && !isCorrect) {
-                      buttonClass = 'bg-red-500 text-white border-red-600';
-                    } else if (isCorrect) {
-                      buttonClass = 'bg-green-500 text-white border-green-600';
-                    }
-                  } else if (isSelected) {
-                    buttonClass = 'bg-purple-200 border-purple-400';
-                  }
+        {/* Búho + Resultado */}
+        <div className="mb-12">
+          <div className="w-40 h-40 bg-white rounded-full shadow-2xl p-8 flex items-center justify-center">
+            <img src="/home/logoSinFondo.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
+          </div>
+        </div>
 
-                  return (
-                    <button
-                      key={aIndex}
-                      onClick={() => handleAnswerSelect(qIndex, aIndex)}
-                      className={`${buttonClass} py-4 px-6 rounded-lg font-nunito tracking-readable text-lg transition-colors flex items-center gap-2`}
-                    >
-                      <span>✓</span>
-                      <span>{answer}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+        <h1 className="text-6xl font-black text-white drop-shadow-lg mb-16 tracking-widest">
+          ¡GENIAL!
+        </h1>
+
+        {/* Estrellas */}
+        <div className="flex gap-6 mb-16">
+          {[1, 2, 3].map((star) => (
+            <Star
+              key={star}
+              size={100}
+              className={`transition-all duration-700 ${
+                star <= stars 
+                  ? 'text-yellow-400 fill-yellow-400 drop-shadow-2xl animate-bounce' 
+                  : 'text-gray-300'
+              }`}
+            />
           ))}
+        </div>
 
-          {/* Action buttons */}
-          {!showResults ? (
-            <div className="flex justify-end">
-              <button
-                onClick={handleReview}
-                className="bg-black text-white px-8 py-4 rounded-lg font-nunito tracking-readable text-xl hover:bg-gray-800 transition-colors flex items-center gap-2"
-                disabled={selectedAnswers.length !== quiz.questions.length}
-              >
-                <span>✓</span>
-                <span>REVISAR</span>
-              </button>
-            </div>
-          ) : (
-            <div className="space-y-4">
-              {/* Stars display */}
-              <div className="flex justify-center gap-2">
-                <button className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center text-3xl">
-                  ↻
-                </button>
-                {[1, 2, 3].map((star) => (
-                  <div
-                    key={star}
-                    className={`text-5xl ${star <= stars ? 'text-yellow-400' : 'text-gray-300'}`}
-                  >
-                    ★
-                  </div>
-                ))}
-                <button 
-                  onClick={handleNext}
-                  className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center text-3xl"
+        {/* Botones */}
+        <div className="flex gap-8">
+          <button
+            onClick={handleReset}
+            className="w-20 h-20 bg-[#FFB74D] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+          >
+            <RotateCw size={48} className="text-white" />
+          </button>
+
+          <button
+            onClick={handleNext}
+            className="w-20 h-20 bg-[#4CAF50] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform"
+          >
+            <ArrowRight size={48} className="text-white" />
+          </button>
+        </div>
+
+        <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t-4 border-[#4CAF50] p-4">
+          <Navigation showBack showHome showFavorites showSearch />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="min-h-screen bg-[#5CB8E4] flex flex-col">
+
+      {/* Búho + Título */}
+      <div className="flex flex-col items-center pt-12 pb-8 px-6">
+        <div className="mb-8">
+          <div className="w-32 h-32 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
+            <img src="/owl-reading.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
+          </div>
+        </div>
+
+        <h1 className="text-5xl md:text-6xl font-black text-white text-center tracking-widest drop-shadow-lg">
+          PREGUNTA {currentQuestionIndex + 1}
+        </h1>
+      </div>
+
+      {/* Pregunta actual */}
+      <div className="flex-1 px-6 pb-32 flex items-center justify-center">
+        <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-3xl w-full">
+          
+          <p className="text-3xl md:text-4xl font-black text-[#1A3C5E] text-center mb-12 tracking-widest">
+            {currentQuestion.question}
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {currentQuestion.answers.map((answer, aIndex) => {
+              const isSelected = selectedAnswers[currentQuestionIndex] === aIndex;
+              const isCorrect = aIndex === currentQuestion.correctAnswer;
+              
+              let buttonClass = 'bg-[#E8F5E9] border-4 border-[#4CAF50] hover:bg-[#C8E6C9]';
+              
+              if (isSelected) {
+                buttonClass = isCorrect 
+                  ? 'bg-[#4CAF50] text-white border-[#388E3C]' 
+                  : 'bg-[#FF5252] text-white border-[#D32F2F]';
+              }
+
+              return (
+                <button
+                  key={aIndex}
+                  onClick={() => handleAnswerSelect(aIndex)}
+                  disabled={isSelected}
+                  className={`
+                    ${buttonClass}
+                    py-8 px-10 rounded-2xl font-black text-2xl md:text-3xl
+                    tracking-widest transition-all duration-300
+                    flex items-center justify-center gap-4 shadow-xl
+                    ${!isSelected && 'hover:scale-105'}
+                  `}
                 >
-                  →
+                  {isSelected && isCorrect && <Check size={48} />}
+                  {isSelected && !isCorrect && <X size={48} />}
+                  <span>{answer}</span>
                 </button>
-              </div>
-            </div>
-          )}
+              );
+            })}
+          </div>
+
+          {/* Indicador de progreso */}
+          <div className="flex justify-center gap-2 mt-12">
+            {quiz.questions.map((_, idx) => (
+              <div
+                key={idx}
+                className={`w-4 h-4 rounded-full transition-all ${
+                  idx < currentQuestionIndex ? 'bg-[#4CAF50]' :
+                  idx === currentQuestionIndex ? 'bg-[#FFB74D] scale-150' :
+                  'bg-gray-300'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
 
-      <Navigation showBack showHome showFavorites showSearch />
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t-4 border-[#4CAF50] p-4">
+        <Navigation showBack showHome showFavorites showSearch />
+      </div>
     </div>
   );
 }
