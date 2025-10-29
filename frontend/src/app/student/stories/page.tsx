@@ -9,10 +9,10 @@ export default function Stories() {
   const router = useRouter();
 
   const categories = [
-    { id: 'realista', name: 'realista', stories: mockStories.filter(s => s.category === 'realista') },
-    { id: 'categoria2', name: 'categoria 2', stories: mockStories.filter(s => s.category === 'categoria2') },
-    { id: 'categoria3', name: 'categoria 3', stories: [] },
-    { id: 'categoria4', name: 'categoria 4', stories: [] },
+    { id: '1', name: 'realista', stories: mockStories.filter(s => s.category === '1') },
+    { id: '2', name: 'categoria 2', stories: mockStories.filter(s => s.category === '2') },
+    { id: '3', name: 'categoria 3', stories: [] },
+    { id: '4', name: 'categoria 4', stories: [] },
   ];
 
   return (
