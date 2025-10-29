@@ -43,18 +43,22 @@ export default function AgeInput() {
             label=""
             type="number"
             value={age}
-            onChange={setAge}
+            onChange={(value) => {
+              if (/^\d{0,2}$/.test(value)) {
+                setAge(value);
+              }
+            }}
             placeholder=""
             className="w-32 sm:w-40 md:w-48
-      h-20
-      text-center text-6xl font-blac
-      text-[#4CAF50]
-      bg-[#E8F5E9]
-      placeholder-[#81C784]
-      rounded-2xl
-      border-none
-      focus:outline-none focus:ring-4 focus:ring-[#81C784]/40
-      shadow-inner"
+  h-20
+  text-center text-6xl font-black
+  text-[#5CB8E4]
+  bg-[#E3F2FD]                 /* Azul muy claro de fondo */
+  placeholder-[#90CAF9]       /* Azul más suave para placeholder */
+  rounded-2xl
+  border-none
+  focus:outline-none focus:ring-4 focus:ring-[#5CB8E4]/40
+  shadow-inner"
           />
         </div>
 

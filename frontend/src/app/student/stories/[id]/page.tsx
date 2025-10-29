@@ -39,7 +39,7 @@ export default function CategoryStories() {
         </div>
 
         <h1 className="text-5xl md:text-6xl font-black text-white text-center tracking-widest drop-shadow-lg">
-          {category.name.toUpperCase()}
+          {category.name}
         </h1>
       </div>
 
@@ -71,7 +71,7 @@ export default function CategoryStories() {
                 {/* Título del cuento */}
                 <div className="p-5 text-center">
                   <h2 className="text-lg md:text-xl font-black text-[#1A3C5E] tracking-widest line-clamp-2">
-                    {story.title.toUpperCase()}
+                    {story.title}
                   </h2>
                 </div>
 

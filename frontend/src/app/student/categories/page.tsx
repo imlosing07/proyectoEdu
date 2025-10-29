@@ -24,7 +24,7 @@ export default function Stories() {
         </div>
 
         <h1 className="text-5xl md:text-6xl font-black text-white text-center tracking-widest drop-shadow-lg">
-          Categorias
+          CATEGORIAS
         </h1>
       </div>
 
@@ -62,8 +62,8 @@ export default function Stories() {
 
               {/* Texto */}
               <div className="p-5 text-center">
-                <h2 className="text-xl md:text-2xl font-black text-[#1A3C5E] tracking-widest">
-                  {category.name.toUpperCase()}
+                <h2 className="text-xl md:text-1xl font-black text-[#1A3C5E] tracking-widest">
+                  {category.name}
                 </h2>
               </div>
 
