@@ -2,7 +2,7 @@ interface InputProps {
   label: string;
   value: string;
   onChange: (value: string) => void;
-  type?: 'text' | 'email' | 'password';
+  type?: string;
   placeholder?: string;
 }
 

@@ -19,7 +19,7 @@ export default function NameInput() {
   };
 
   return (
-    <div className="min-h-screen bg-amber-50 flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-blue-500 flex flex-col items-center justify-center px-4">
       <div className="mb-12">
         <div className="relative w-48 h-48 mb-8 mx-auto">
           <Image
@@ -32,7 +32,7 @@ export default function NameInput() {
       </div>
 
       <form onSubmit={handleSubmit} className="w-full max-w-md">
-        <div className="bg-white rounded-lg shadow-lg p-8 mb-6">
+        <div className="bg-blue rounded-lg shadow-lg p-8 mb-6">
           <Input
             label="Nombre"
             type="text"
@@ -46,7 +46,7 @@ export default function NameInput() {
           <Button variant="back" onClick={() => router.back()}>
             ←
           </Button>
-          <Button variant="forward" onClick={() => router.push('/student/stories')} className="flex-1">
+          <Button variant="forward" type="submit" className="flex-1">
             →
           </Button>
         </div>

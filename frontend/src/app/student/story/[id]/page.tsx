@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Navigation from '@/components/layout/Navigation';
 import PictogramText from '@/components/ui/PictogramText';
 import { mockStories } from '@/data/mockData';
+import { useEffect, useState } from 'react';
 
 export default function StoryPage() {
   const router = useRouter();
@@ -12,6 +13,15 @@ export default function StoryPage() {
   const storyId = params.id as string;
 
   const story = mockStories.find(s => s.id === storyId);
+
+  const [ciclo, setCiclo] = useState<'primerCiclo' | 'segundoCiclo' | 'tercerCiclo'>('primerCiclo');
+
+  useEffect(() => {
+    const age = Number(localStorage.getItem('studentAge'));
+    if (age >= 4 && age <= 6) setCiclo('primerCiclo');
+    else if (age >= 7 && age <= 8) setCiclo('segundoCiclo');
+    else if (age >= 9 && age <= 10) setCiclo('tercerCiclo');
+  }, []);
 
   if (!story) {
     return <div>Cuento no encontrado</div>;
@@ -46,11 +56,11 @@ export default function StoryPage() {
               </div>
 
               <div className="leading-loose text-left">
-                {story.content.map((item, index) => (
-                  <PictogramText 
-                    key={index} 
-                    text={item.text} 
-                    image={item.image} 
+                {story.contenidos[ciclo].map((item, index) => (
+                  <PictogramText
+                    key={index}
+                    text={item.text}
+                    image={item.image}
                   />
                 ))}
               </div>

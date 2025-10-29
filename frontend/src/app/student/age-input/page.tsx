@@ -12,7 +12,8 @@ export default function AgeInput() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (age) {
+    const ageNumber = parseInt(age);
+    if (age && !isNaN(ageNumber) && ageNumber > 0) {
       // Guardar edad en localStorage o estado global
       localStorage.setItem('studentAge', age);
       router.push('/student/name-input');
@@ -35,17 +36,19 @@ export default function AgeInput() {
       <form onSubmit={handleSubmit} className="w-full max-w-md">
         <Input
           label="EDAD"
-          type="text"
+          type="number"
           value={age}
-          onChange={setAge}
-          placeholder="Value"
+          onChange={(value) => {
+            setAge(value);
+          }}
+          placeholder="Ingresa tu edad"
         />
 
         <div className="flex gap-4">
           <Button variant="back" onClick={() => router.back()}>
             ←
           </Button>
-          <Button variant="forward" onClick={() => router.push('/student/name-input')} className="flex-1">
+          <Button variant="forward" type="submit" className="flex-1">
             →
           </Button>
         </div>
