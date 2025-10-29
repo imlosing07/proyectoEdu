@@ -126,13 +126,8 @@ export default function QuizPage() {
   return (
     <div className="min-h-screen bg-[#5CB8E4] flex flex-col">
 
-      {/* Búho + Título */}
+      {/* Título */}
       <div className="flex flex-col items-center pt-12 pb-8 px-6">
-        <div className="mb-8">
-          <div className="w-32 h-32 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
-            <img src="/owl-reading.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
-          </div>
-        </div>
 
         <h1 className="text-5xl md:text-6xl font-black text-white text-center tracking-widest drop-shadow-lg">
           PREGUNTA {currentQuestionIndex + 1}
@@ -167,7 +162,7 @@ export default function QuizPage() {
                   disabled={isSelected}
                   className={`
                     ${buttonClass}
-                    py-8 px-10 rounded-2xl font-black text-2xl md:text-3xl
+                    py-8 px-10 rounded-2xl font-black text-1xl
                     tracking-widest transition-all duration-300
                     flex items-center justify-center gap-4 shadow-xl
                     ${!isSelected && 'hover:scale-105'}
