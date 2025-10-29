@@ -1,36 +1,127 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# proyectoEdu — Frontend
 
-## Getting Started
+Aplicación frontend para la plataforma proyectoEdu, construida con Next.js (App Router), TypeScript y Tailwind CSS.
+Su propósito es facilitar el aprendizaje mediante cuentos pictográficos y actividades guiadas tanto para estudiantes como para adultos/docentes.
 
-First, run the development server:
+## Características Principales
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Flujos independientes para estudiantes y adultos
+- Interfaz visual amigable y accesible
+- Compatibilidad con lectura en voz alta (Text-to-Speech)
+- Componentes reutilizables y escalables
+- Basado en estándares modernos (Next.js + React 19 + TypeScript)
+
+## Tecnologías
+
+| Tecnología | Uso |
+|-----------|-----|
+| Next.js 16 (App Router) | Estructura del frontend |
+| React 19 | Motor UI |
+| TypeScript | Tipado seguro |
+| Tailwind CSS | Estilos |
+| LocalStorage | Persistencia simple en el navegador |
+
+## Requisitos Previos
+
+- Node.js 18+
+- Uno de los siguientes gestores de paquetes:
+  - npm
+  - pnpm
+  - yarn
+
+## Instalación
+
+```
+cd d:\proyectoEdurontend
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Con pnpm:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+pnpm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Con yarn:
 
-## Learn More
+```
+yarn
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Modo Desarrollo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Abrir en el navegador:
+http://localhost:3000
 
-## Deploy on Vercel
+## Compilar para Producción
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+npm run build
+npm run start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Scripts Disponibles
+
+| Script  | Acción |
+|--------|--------|
+| dev    | Inicia el servidor de desarrollo |
+| build  | Genera el build de producción |
+| start  | Ejecuta la aplicación en producción |
+| lint   | Ejecuta análisis de código |
+
+## Estructura del Proyecto
+
+```
+app/
+  student/
+    age-input/page.tsx        # Ingreso de edad del estudiante
+    name-input/               # Flujo para capturar nombre
+  adult/                      # Páginas para adultos/educadores
+
+src/
+  components/                 # Componentes UI reutilizables
+  data/mockData.ts            # Datos de ejemplo
+  lib/                        # Funciones utilitarias
+
+public/
+  images/                     # Recursos estáticos
+```
+
+## Variables de Entorno
+
+Crear `.env.local` en la raíz del proyecto:
+
+```
+NEXT_PUBLIC_API_URL=https://tu-backend-api.com
+NEXT_PUBLIC_APP_ENV=local
+```
+
+## Validación del Ingreso de Edad
+
+El formulario:
+- Acepta solo números
+- Valida antes de guardar en localStorage
+- Redirige al siguiente paso si es válido
+
+Para modificar la validación: `app/student/age-input/page.tsx`
+
+## Próximos Pasos Recomendados
+
+- Agregar diseño responsivo para tablets
+- Integrar Text-to-Speech
+- Crear panel de progreso del estudiante
+- Integrar backend si aplica
+
+## Contribución
+
+1. Crear rama (`feature/nombre`)
+2. Hacer commits claros
+3. Abrir Pull Request
+
+## Licencia
+
+Proyecto interno — Uso educativo
