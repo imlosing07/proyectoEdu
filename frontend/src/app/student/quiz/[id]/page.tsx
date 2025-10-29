@@ -129,7 +129,7 @@ export default function QuizPage() {
       {/* Título */}
       <div className="flex flex-col items-center pt-12 pb-8 px-6">
 
-        <h1 className="text-5xl md:text-6xl font-black text-white text-center tracking-widest drop-shadow-lg">
+        <h1 className="text-4xl font-black text-white text-center tracking-widest drop-shadow-lg">
           PREGUNTA {currentQuestionIndex + 1}
         </h1>
       </div>
