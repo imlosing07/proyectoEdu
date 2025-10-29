@@ -13,8 +13,6 @@ export interface Story {
     segundoCiclo: Pictogram[];
     tercerCiclo: Pictogram[];
   };
-  audioTone?: string; // Nuevo campo
-  hasAudio?: boolean; // Nuevo campo
 }
 
 export interface Question {
@@ -42,121 +40,163 @@ export const mockStories: Story[] = [
         { text: "tortuga", image: "/pictograms/tortuga.png" },
         { text: "es", image: "" },
         { text: "lenta", image: "/pictograms/lenta.png" },
-        { text: ".", image: "" },
+        { text: "", image: "" },
 
         // PANTALLA 2
         { text: "La", image: "" },
         { text: "liebre", image: "/pictograms/liebre.png" },
-        { text: "corre", image: "/pictograms/correr.png" },
+        { text: "corre", image: "" },
         { text: "rápido", image: "/pictograms/rapido.png" },
-        { text: ".", image: "" },
+        { text: "", image: "" },
 
         // PANTALLA 3
         { text: "Compiten", image: "/pictograms/compiten.png" },
         { text: "en", image: "" },
         { text: "carrera", image: "/pictograms/carrera.png" },
-        { text: ".", image: "" },
+        { text: "", image: "" },
         { text: "", image: "" },
 
         // PANTALLA 4
         { text: "La", image: "" },
         { text: "liebre", image: "/pictograms/liebre.png" },
         { text: "duerme", image: "/pictograms/duerme.png" },
-        { text: ".", image: "" },
+        { text: "", image: "" },
         { text: "", image: "" },
 
         // PANTALLA 5
         { text: "La", image: "" },
         { text: "tortuga", image: "/pictograms/tortuga.png" },
-        { text: "sigue", image: "/pictograms/camina.png" },
+        { text: "camina", image: "/pictograms/camina.png" },
         { text: "y", image: "" },
         { text: "gana", image: "/pictograms/gana.png" },
       ],
       segundoCiclo: [
         // PANTALLA 1
-        { text: "La tortuga es", image: "/pictograms/tortuga.png" },
+        { text: "La", image: "" },
+        { text: "tortuga", image: "/pictograms/tortuga.png" },
+        { text: "es", image: "" },
         { text: "lenta", image: "/pictograms/lenta.png" },
-        { text: "pero constante", image: "/pictograms/constante.png" },
-        { text: ".", image: "" },
+        { text: "pero", image: "" },
+        { text: "constante", image: "/pictograms/constante.png" },
         { text: "", image: "" },
 
         // PANTALLA 2
-        { text: "La liebre corre", image: "/pictograms/liebre.png" },
+        { text: "La", image: "" },
+        { text: "liebre", image: "/pictograms/liebre.png" },
+        { text: "corre", image: "" },
         { text: "rápido", image: "/pictograms/rapido.png" },
-        { text: "pero se confía", image: "/pictograms/confia.png" },
-        { text: ".", image: "" },
+        { text: "pero se", image: "" },
+        { text: "confía", image: "/pictograms/confia.png" },
         { text: "", image: "" },
 
         // PANTALLA 3
-        { text: "Empiezan la", image: "/pictograms/carrera.png" },
-        { text: "carrera juntos", image: "" },
-        { text: ".", image: "" },
+        { text: "Empiezan la", image: "" },
+        { text: "carrera", image: "/pictograms/carrera.png" },
+        { text: "juntos", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
         { text: "", image: "" },
         { text: "", image: "" },
 
         // PANTALLA 4
-        { text: "La liebre se", image: "/pictograms/duerme.png" },
-        { text: "cansa y duerme", image: "" },
-        { text: ".", image: "" },
+        { text: "La", image: "" },
+        { text: "liebre", image: "/pictograms/liebre.png" },
+        { text: "se cansa y", image: "" },
+        { text: "duerme", image: "/pictograms/duerme.png" },
+        { text: "", image: "" },
         { text: "", image: "" },
         { text: "", image: "" },
 
         // PANTALLA 5
-        { text: "La tortuga sigue", image: "/pictograms/camina.png" },
-        { text: "sin parar", image: "/pictograms/persistente.png" },
-        { text: "y llega primero", image: "/pictograms/llega.png" },
-        { text: ".", image: "" },
+        { text: "La", image: "" },
+        { text: "tortuga", image: "/pictograms/tortuga.png" },
+        { text: "sigue", image: "" },
+        { text: "camina", image: "/pictograms/camina.png" },
+        { text: "sin parar y", image: "" },
+        { text: "llega", image: "/pictograms/llega.png" },
         { text: "", image: "" },
 
         // PANTALLA 6
-        { text: "Moraleja:", image: "/pictograms/moraleja.png" },
-        { text: "w", image: "/pictograms/constancia.png" },
-        { text: "vence a la prisa", image: "/pictograms/prisa.png" },
-        { text: ".", image: "" },
+        { text: "Moraleja", image: "/pictograms/moraleja.png" },
+        { text: "La", image: "" },
+        { text: "constancia", image: "/pictograms/constancia.png" },
+        { text: "vence a la", image: "" },
+        { text: "prisa", image: "/pictograms/prisa.png" },
+        { text: "", image: "" },
         { text: "", image: "" },
       ],
       tercerCiclo: [
         // PANTALLA 1
-        { text: "Una tortuga lenta", image: "/pictograms/tortuga.png" },
-        { text: "pero persistente", image: "/pictograms/persistente.png" },
+        { text: "Una", image: "" },
+        { text: "tortuga", image: "/pictograms/tortuga.png" },
+        { text: "lenta pero", image: "" },
+        { text: "persistente", image: "/pictograms/persistente.png" },
         { text: "desafía a una", image: "" },
-        { text: "liebre veloz", image: "/pictograms/liebre.png" },
-        { text: ".", image: "" },
+        { text: "liebre", image: "/pictograms/liebre.png" },
+        { text: "veloz", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
 
         // PANTALLA 2
-        { text: "La liebre se adelanta", image: "/pictograms/adelanta.png" },
-        { text: "rápidamente y", image: "" },
-        { text: "se confía demasiado", image: "/pictograms/confia.png" },
-        { text: ".", image: "" },
+        { text: "La", image: "" },
+        { text: "liebre", image: "/pictograms/liebre.png" },
+        { text: "se", image: "" },
+        { text: "adelanta", image: "/pictograms/adelanta.png" },
+        { text: "rápidamente", image: "" },
+        { text: "y se", image: "" },
+        { text: "confía", image: "/pictograms/confia.png" },
+        { text: "demasiado", image: "" },
+        { text: "", image: "" },
         { text: "", image: "" },
 
         // PANTALLA 3
-        { text: "Decide dormir", image: "/pictograms/duerme.png" },
-        { text: "un rato, pensando", image: "" },
-        { text: "que ya ganó", image: "" },
-        { text: ".", image: "" },
+        { text: "Decide", image: "" },
+        { text: "dormir", image: "/pictograms/duerme.png" },
+        { text: "un rato,", image: "" },
+        { text: "pensando que", image: "" },
+        { text: "ya ganó", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
         { text: "", image: "" },
 
         // PANTALLA 4
         { text: "Mientras tanto,", image: "" },
-        { text: "la tortuga camina", image: "/pictograms/camina.png" },
-        { text: "sin parar, paso", image: "" },
-        { text: "a paso", image: "" },
-        { text: ".", image: "" },
+        { text: "la", image: "" },
+        { text: "tortuga", image: "/pictograms/tortuga.png" },
+        { text: "camina", image: "/pictograms/camina.png" },
+        { text: "sin parar,", image: "" },
+        { text: "paso a paso", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
 
         // PANTALLA 5
-        { text: "Al final,", image: "" },
-        { text: "la tortuga cruza", image: "/pictograms/llega.png" },
-        { text: "la meta primero", image: "" },
-        { text: ".", image: "" },
+        { text: "Al final, la", image: "" },
+        { text: "tortuga", image: "/pictograms/tortuga.png" },
+        { text: "cruza la", image: "" },
+        { text: "meta", image: "/pictograms/llega.png" },
+        { text: "primero", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
+        { text: "", image: "" },
         { text: "", image: "" },
 
         // PANTALLA 6
-        { text: "La moraleja:", image: "/pictograms/moraleja.png" },
-        { text: "la constancia y el", image: "/pictograms/esfuerzo.png" },
-        { text: "esfuerzo vencen", image: "" },
-        { text: "a la velocidad", image: "" },
-        { text: "sin disciplina", image: "/pictograms/disciplina.png" },
+        { text: "La", image: "" },
+        { text: "moraleja", image: "/pictograms/moraleja.png" },
+        { text: "la", image: "" },
+        { text: "constancia", image: "/pictograms/constancia.png" },
+        { text: "y el", image: "" },
+        { text: "esfuerzo", image: "/pictograms/esfuerzo.png" },
+        { text: "vencen a la", image: "" },
+        { text: "velocidad", image: "/pictograms/velocidad.png" },
+        { text: "sin", image: "" },
+        { text: "disciplina", image: "/pictograms/disciplina.png" },
       ]
     }
   }
