@@ -13,15 +13,6 @@ export default function Stories() {
 
       {/* Búho + Título */}
       <div className="flex flex-col items-center pt-12 pb-8 px-6">
-        <div className="mb-8">
-          <div className="w-32 h-32 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
-            <img
-              src="/owl-reading.png"
-              alt="Búho lector"
-              className="w-full h-full object-contain drop-shadow-md"
-            />
-          </div>
-        </div>
 
         <h1 className="text-5xl md:text-6xl font-black text-white text-center tracking-widest drop-shadow-lg">
           CATEGORIAS
@@ -43,8 +34,8 @@ export default function Stories() {
               className={`
                 group relative bg-white rounded-3xl shadow-xl overflow-hidden
                 transition-all duration-300
-                ${category.stories.length > 0 
-                  ? 'hover:shadow-2xl hover:scale-[1.02] cursor-pointer' 
+                ${category.stories.length > 0
+                  ? 'hover:shadow-2xl hover:scale-[1.02] cursor-pointer'
                   : 'opacity-70 cursor-not-allowed'
                 }
               `}
