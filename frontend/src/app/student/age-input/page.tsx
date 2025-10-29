@@ -26,7 +26,7 @@ export default function AgeInput() {
   return (
     <div className="min-h-screen bg-[#5CB8E4] flex flex-col items-center justify-center p-8">
 
-      {/* Búho */}
+      {/* Lexia */}
       <div className="mb-16">
         <div className="w-64 h-64 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
           <img src="/home/logoSinFondo2.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
