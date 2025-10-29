@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import { ArrowLeft, ArrowRight } from "lucide-react"
 
 export default function NameInput() {
   const [name, setName] = useState(localStorage.getItem('studentName') || '');
@@ -57,11 +58,18 @@ export default function NameInput() {
         </div>
 
         <div className="flex gap-4">
-          <Button variant="back" onClick={() => router.back()}>
-            ←
+          <Button
+            onClick={() => router.back()}
+            className="flex-1 text-4xl flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF4081] to-[#E91E63] text-white shadow-lg rounded-2xl"
+          >
+            <ArrowLeft size={40} strokeWidth={2.5} />
           </Button>
-          <Button variant="forward" type="submit" className="flex-1">
-            →
+
+          <Button
+            type="submit"
+            className="flex-1 text-4xl flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF4081] to-[#E91E63] text-white shadow-lg rounded-2xl"
+          >
+            <ArrowRight size={40} strokeWidth={2.5} />
           </Button>
         </div>
       </form>

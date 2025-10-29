@@ -31,7 +31,7 @@ export default function Navigation({
         
         {showHome && (
           <button 
-            onClick={() => router.push('/student/stories')}
+            onClick={() => router.push('/student/categories')}
             className="w-12 h-12 flex items-center justify-center text-3xl"
           >
             🏠

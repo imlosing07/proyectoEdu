@@ -1,7 +1,7 @@
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'back' | 'forward';
+  variant?: 'primary' | 'secondary' | 'back' | 'forward' | 'nada';
   type?: 'button' | 'submit';
   className?: string;
 }
@@ -9,7 +9,7 @@ interface ButtonProps {
 export default function Button({ 
   children, 
   onClick, 
-  variant = 'primary',
+  variant = 'nada',
   type = 'button',
   className = ''
 }: ButtonProps) {
@@ -20,6 +20,7 @@ export default function Button({
     secondary: 'bg-gray-200 hover:bg-gray-300 text-black',
     back: 'bg-yellow-400 hover:bg-yellow-500 w-16 h-16 flex items-center justify-center',
     forward: 'bg-green-500 hover:bg-green-600 w-16 h-16 flex items-center justify-center',
+    nada: '',
   };
 
   return (
