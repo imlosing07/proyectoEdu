@@ -7,6 +7,7 @@ export interface Story {
   id: string;
   title: string;
   category: string;
+  image?: string;
   contenidos: {
     primerCiclo: Pictogram[];
     segundoCiclo: Pictogram[];
@@ -28,13 +29,12 @@ export interface Quiz {
   questions: Question[];
 }
 
-
-
 export const mockStories: Story[] = [
   {
     id: "1",
     title: "La Tortuga y la Liebre",
     category: "1",
+    image: "/stories/tortuga-liebre.jpg",
     contenidos: {
       primerCiclo: [
         { text: "La 1 ", image: "/pictograms/tortuga.png" },
@@ -98,7 +98,29 @@ export const mockQuizzes: Quiz[] = [
   },
 ];
 
-export const mockCategories = [
-  { id: "1", name: "Clasicos", image: "/categories/forest-animals.jpg" },
-  { id: "2", name: "Clasicos", image: "/categories/forest-animals.jpg" },
-];
+export const categories = [
+    { 
+      id: '1', 
+      name: 'Cuentos Clásicos y Fábulas', 
+      image: '/categories/1.jpg', 
+      stories: mockStories.filter(s => s.category === '1') 
+    },
+    { 
+      id: '2', 
+      name: 'Cuentos Realistas', 
+      image: '/categories/realista.jpg', 
+      stories: mockStories.filter(s => s.category === '2') 
+    },
+    { 
+      id: '3', 
+      name: 'Aventuras y Fantasía', 
+      image: '/categories/fantasia.jpg', 
+      stories: [] 
+    },
+    { 
+      id: '4', 
+      name: 'Cuentos de Valores', 
+      image: '/categories/valores.jpg', 
+      stories: [] 
+    },
+  ];
