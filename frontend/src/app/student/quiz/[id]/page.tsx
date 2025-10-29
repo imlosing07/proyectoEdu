@@ -13,7 +13,9 @@ export default function QuizPage() {
 
   const quiz = mockQuizzes.find(q => q.storyId === storyId);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswers, setSelectedAnswers] = useState<number[]>([]);
+  const [selectedAnswers, setSelectedAnswers] = useState<(number | null)[]>(
+    () => quiz ? Array(quiz.questions.length).fill(null) : []
+  );
   const [showResults, setShowResults] = useState(false);
   const [stars, setStars] = useState(0);
 
@@ -30,10 +32,11 @@ export default function QuizPage() {
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (showResults) return;
-    
+
     const newAnswers = [...selectedAnswers];
     newAnswers[currentQuestionIndex] = answerIndex;
-    setSelectedAnswers(newAnswers);
+    setSelectedAnswers([...newAnswers]);
+    selectedAnswers[currentQuestionIndex] = answerIndex;
 
     // Avanzar automáticamente tras 1 segundo
     setTimeout(() => {
@@ -47,54 +50,72 @@ export default function QuizPage() {
 
   const handleReview = () => {
     setShowResults(true);
-    
+
     let correctCount = 0;
     quiz.questions.forEach((question, index) => {
-      if (selectedAnswers[index] === question.correctAnswer) {
+      if (
+        selectedAnswers[index] !== undefined &&
+        selectedAnswers[index] !== null &&
+        selectedAnswers[index] === question.correctAnswer
+      ) {
         correctCount++;
       }
     });
-    
     setStars(correctCount);
   };
 
   const handleReset = () => {
     setCurrentQuestionIndex(0);
-    setSelectedAnswers([]);
+    setSelectedAnswers(Array(quiz.questions.length).fill(null));
     setShowResults(false);
     setStars(0);
   };
 
   const handleNext = () => {
-    router.push('/student/stories');
+    router.push('/student/categories');
   };
 
   if (showResults) {
     return (
       <div className="min-h-screen bg-[#5CB8E4] flex flex-col items-center justify-center p-8">
 
-        {/* Búho + Resultado */}
-        <div className="mb-12">
-          <div className="w-40 h-40 bg-white rounded-full shadow-2xl p-8 flex items-center justify-center">
-            <img src="/home/logoSinFondo.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
+        {/* Lexia */}
+        <div className="mb-16">
+          <div className="w-64 h-64 bg-white rounded-full shadow-2xl p-6 flex items-center justify-center">
+            <img src="/home/logoSinFondo2.png" alt="Búho" className="w-full h-full object-contain drop-shadow-md" />
           </div>
         </div>
 
-        <h1 className="text-6xl font-black text-white drop-shadow-lg mb-16 tracking-widest">
-          ¡GENIAL!
+        <h1
+          className={`text-4xl font-black drop-shadow-lg mb-16 tracking-widest transition-all duration-300 ${stars === 3
+              ? "text-yellow-300" // excelente contraste con el celeste
+              : stars === 2
+                ? "text-green-200"
+                : stars === 1
+                  ? "text-orange-300"
+                  : "text-red-400"
+            }`}
+        >
+          {stars === 3
+            ? "¡INCREÍBLE! 🌟"
+            : stars === 2
+              ? "¡GENIAL! 😄"
+              : stars === 1
+                ? "¡BUEN INTENTO! 👍"
+                : "¡SIGUE INTENTANDO! 💪"}
         </h1>
+
 
         {/* Estrellas */}
         <div className="flex gap-6 mb-16">
-          {[1, 2, 3].map((star) => (
+          {Array.from({ length: quiz.questions.length }).map((_, star) => (
             <Star
               key={star}
               size={100}
-              className={`transition-all duration-700 ${
-                star <= stars 
-                  ? 'text-yellow-400 fill-yellow-400 drop-shadow-2xl animate-bounce' 
-                  : 'text-gray-300'
-              }`}
+              className={`transition-all duration-700 ${star < stars
+                ? 'text-yellow-400 fill-yellow-400 drop-shadow-2xl animate-bounce'
+                : 'text-gray-300'
+                }`}
             />
           ))}
         </div>
@@ -137,7 +158,7 @@ export default function QuizPage() {
       {/* Pregunta actual */}
       <div className="flex-1 px-6 pb-32 flex items-center justify-center">
         <div className="bg-white rounded-3xl shadow-2xl p-10 max-w-3xl w-full">
-          
+
           <p className="text-3xl md:text-4xl font-black text-[#1A3C5E] text-center mb-12 tracking-widest">
             {currentQuestion.question}
           </p>
@@ -146,12 +167,12 @@ export default function QuizPage() {
             {currentQuestion.answers.map((answer, aIndex) => {
               const isSelected = selectedAnswers[currentQuestionIndex] === aIndex;
               const isCorrect = aIndex === currentQuestion.correctAnswer;
-              
+
               let buttonClass = 'bg-[#E8F5E9] border-4 border-[#4CAF50] hover:bg-[#C8E6C9]';
-              
+
               if (isSelected) {
-                buttonClass = isCorrect 
-                  ? 'bg-[#4CAF50] text-white border-[#388E3C]' 
+                buttonClass = isCorrect
+                  ? 'bg-[#4CAF50] text-white border-[#388E3C]'
                   : 'bg-[#FF5252] text-white border-[#D32F2F]';
               }
 
@@ -181,11 +202,10 @@ export default function QuizPage() {
             {quiz.questions.map((_, idx) => (
               <div
                 key={idx}
-                className={`w-4 h-4 rounded-full transition-all ${
-                  idx < currentQuestionIndex ? 'bg-[#4CAF50]' :
+                className={`w-4 h-4 rounded-full transition-all ${idx < currentQuestionIndex ? 'bg-[#4CAF50]' :
                   idx === currentQuestionIndex ? 'bg-[#FFB74D] scale-150' :
-                  'bg-gray-300'
-                }`}
+                    'bg-gray-300'
+                  }`}
               />
             ))}
           </div>
